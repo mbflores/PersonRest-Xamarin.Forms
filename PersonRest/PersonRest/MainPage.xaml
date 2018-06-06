@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PersonRest"
+             x:Class="PersonRest.MainPage">
+
+    <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button FontSize="9" Text="OnAdd" x:Name="OnAdd" Clicked="OnAdd_Clicked"/>
+            <Button FontSize="9" Text="OnDelete" x:Name="OnDelete" Clicked="OnDelete_Clicked"/>
+            <Button FontSize="9" Text="OnUpdate" x:Name="OnUpdate" Clicked="OnUpdate_Clicked"/>
+
+
+        </StackLayout>
+        <ListView x:Name="LstView" ItemSelected="LstView_ItemSelected" IsPullToRefreshEnabled="True" Refreshing="LstView_Refreshing">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}">
+                        <TextCell.ContextActions>
+                            <MenuItem Text="DELETE" x:Name="Delete" Clicked="Delete_Clicked" CommandParameter="{Binding .}"/>
+                            
+                            <MenuItem Text="Update" x:Name="Update" Clicked="Update_Clicked" CommandParameter="{Binding .}"/>
+                        </TextCell.ContextActions>
+
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>
